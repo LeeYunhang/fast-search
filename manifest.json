@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+
+  "name": "Super search",
+  "description": "Avoid redirects when you click on the search terms",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+      "scripts": ["./background.js"]
+  },
+  "content_scripts": [
+      {
+          "matches": [
+              "https://www.google.com/*",
+              "https://www.baidu.com/*"
+          ],
+          "js": ["content.js"],
+          "run_at": "document_idle"
+      }
+  ],
+  "permissions": [
+    "activeTab",
+    "https://api.domain.com/",
+    "tabs",
+    "https://ajax.googleapis.com/",
+    "<all_urls>"
+  ]
+}
